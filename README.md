@@ -101,7 +101,8 @@ O domínio deve ser testável sem rodar o Spring.
 Evitar @Service, @Repository, @Autowired dentro da camada de domínio.
 
 **6. Sugestão de classes e pacotes**
- Pacote: domain
+
+** Pacote: domain**
 
 User, Role
 
@@ -111,7 +112,8 @@ UserRepositoryPort → interface
 
 TokenServicePort → interface
 
- Pacote: application
+
+** Pacote: application**
 
 AuthenticateUserUseCase
 
@@ -119,7 +121,8 @@ RegisterUserUseCase
 
 ValidateTokenUseCase
 
- Pacote: infrastructure
+
+** Pacote: infrastructure**
 
 JpaUserRepositoryAdapter (implementa UserRepositoryPort)
 
@@ -129,7 +132,8 @@ UserEntity (entidade JPA)
 
 UserEntityMapper
 
- Pacote: interfaces
+
+** Pacote: interfaces**
 
 AuthController, UserController
 
