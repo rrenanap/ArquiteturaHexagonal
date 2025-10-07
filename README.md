@@ -104,42 +104,30 @@ Evitar @Service, @Repository, @Autowired dentro da camada de domínio.
 
 **Pacote: domain**
 
-User, Role
-
-AuthServicePort → interface
-
-UserRepositoryPort → interface
-
-TokenServicePort → interface
+* User, Role
+* AuthServicePort → interface
+* UserRepositoryPort → interface
+* TokenServicePort → interface
 
 
 **Pacote: application**
 
-AuthenticateUserUseCase
-
-RegisterUserUseCase
-
-ValidateTokenUseCase
-
+* AuthenticateUserUseCase
+* RegisterUserUseCase
+* ValidateTokenUseCase
 
 **Pacote: infrastructure**
 
-JpaUserRepositoryAdapter (implementa UserRepositoryPort)
-
-JwtTokenAdapter (implementa TokenServicePort)
-
-UserEntity (entidade JPA)
-
-UserEntityMapper
-
+* JpaUserRepositoryAdapter (implementa UserRepositoryPort)
+* JwtTokenAdapter (implementa TokenServicePort)
+* UserEntity (entidade JPA)
+* UserEntityMapper
 
 **Pacote: interfaces**
 
-AuthController, UserController
-
-DTOs (LoginRequest, RegisterUserDTO, AuthResponse)
-
-SecurityConfig, JwtFilter
+* AuthController, UserController
+* DTOs (LoginRequest, RegisterUserDTO, AuthResponse)
+* SecurityConfig, JwtFilter
 _________________________________________________________________________________________________________________
 
 Questões extras:
