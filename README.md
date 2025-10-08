@@ -177,15 +177,15 @@ A arquitetura permite trocar componentes de infraestrutura sem alterar o núcleo
 
 8. Marque os itens como verdadeiro ou falso, justificando brevemente sua resposta:
 
-[ f ] Domínio pode depender de JPA desde que use apenas @Entity.
+[ F ] Domínio pode depender de JPA desde que use apenas @Entity.
 
-[ v ] Input Ports expõem casos de uso; Output Ports modelam dependências externas.
+[ V ] Input Ports expõem casos de uso; Output Ports modelam dependências externas.
 
-[ f ] Adaptadores conhecem detalhes do domínio e podem validar regras complexas.
+[ F ] Adaptadores conhecem detalhes do domínio e podem validar regras complexas.
 
-[ v ] Controllers devem falar com o caso de uso (input port), não diretamente com repositórios.
+[ V ] Controllers devem falar com o caso de uso (input port), não diretamente com repositórios.
 
-[ f ] Trocar o banco (JPA → JDBC) deve exigir mudanças extensas no domínio.
+[ F ] Trocar o banco (JPA → JDBC) deve exigir mudanças extensas no domínio.
 
  
 9. Explique a diferença entre Port e Adapter
