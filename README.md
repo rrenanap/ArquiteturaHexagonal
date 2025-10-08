@@ -10,8 +10,7 @@ São os pontos pelos quais o mundo externo interage com o sistema.
 Exemplos típicos nesse projeto:
 
 - Controllers REST (ex.: AuthController, UserController)
-* Endpoints como /login, /register, /validate, etc.
-
+ *Endpoints como /login, /register, /validate, etc.
 - Security Filters que interceptam requisições HTTP antes do controller.
 - DTOs usados para entrada de dados (LoginRequest, RegisterUserDTO etc.)
 
