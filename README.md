@@ -9,36 +9,23 @@ São os pontos pelos quais o mundo externo interage com o sistema.
 
 Exemplos típicos nesse projeto:
 
-Controllers REST (ex.: AuthController, UserController)
+- Controllers REST (ex.: AuthController, UserController)
+* Endpoints como /login, /register, /validate, etc.
 
-Endpoints como /login, /register, /validate, etc.
-
-Security Filters que interceptam requisições HTTP antes do controller.
-
-DTOs usados para entrada de dados (LoginRequest, RegisterUserDTO etc.)
+- Security Filters que interceptam requisições HTTP antes do controller.
+- DTOs usados para entrada de dados (LoginRequest, RegisterUserDTO etc.)
 
  Entrada = Camada de aplicação (interface web)
 
-Nosso projeto x Arquitetura hexagonal
-
-Analise nosso microsserviço de autenticação disponível no github, e identifique os seguintes pontos:
-
-  *Portas de entrada
-  *Portas de saida
-  *Adaptadores
-  *Domínios
-  
 **2. Portas de saída**
 
 São as formas de comunicação com o “mundo externo” (infraestrutura).
 
 Prováveis portas de saída:
 
-Repositórios JPA (UserRepository, etc.) → acesso a banco de dados H2.
-
-Gerador de JWT (JwtService ou TokenProvider).
-
-Serviços externos (caso o auth service se comunique com outro microsserviço no futuro).
+- Repositórios JPA (UserRepository, etc.) → acesso a banco de dados H2.
+- Gerador de JWT (JwtService ou TokenProvider).
+- Serviços externos (caso o auth service se comunique com outro microsserviço no futuro).
 
  Saída = Adapters de infraestrutura
 
@@ -54,14 +41,11 @@ Serviços externos (caso o auth service se comunique com outro microsserviço no
 Camada central da arquitetura hexagonal — contém a lógica de negócio pura, sem dependências externas.
 
 Prováveis elementos do domínio:
-
-Entidades: User, Role, Permission
-
-Serviços de domínio: AuthService, UserService
-
-Casos de uso: AuthenticateUser, RegisterUser, ValidateToken
-
-Essas classes não devem depender de Spring, JPA ou anotações de infraestrutura.
+- Entidades: User, Role, Permission
+- Serviços de domínio: AuthService, UserService
+- Casos de uso: AuthenticateUser, RegisterUser, ValidateToken
+  
+ Essas classes não devem depender de Spring, JPA ou anotações de infraestrutura.
 
 **5. O que falta para estar 100% aderente ao modelo hexagonal**
 
@@ -70,14 +54,11 @@ Atualmente (pela estrutura típica do Spring Boot), o projeto segue uma arquitet
 Faltam os seguintes pontos:
 
 Separação clara entre Domínio e Infraestrutura
-
-Classes de domínio não devem usar @Entity (isso é infraestrutura).
-
-Crie mapeadores (UserEntityMapper) entre o domínio puro e o modelo JPA.
+ Classes de domínio não devem usar @Entity (isso é infraestrutura).
+ Crie mapeadores (UserEntityMapper) entre o domínio puro e o modelo JPA.
 
 Interfaces (Ports) explícitas
-
-O domínio deveria definir interfaces como:
+ O domínio deveria definir interfaces como:
 
 public interface UserRepositoryPort {
     Optional<User> findByEmail(String email);
@@ -94,11 +75,9 @@ com.example.authservice
 ├── infrastructure    # Adaptadores de saída (JPA, JWT, Email)
 └── interfaces        # Adaptadores de entrada (controllers REST)
 
-Independência do framework
-
-O domínio deve ser testável sem rodar o Spring.
-
-Evitar @Service, @Repository, @Autowired dentro da camada de domínio.
+- Independência do framework
+ O domínio deve ser testável sem rodar o Spring.
+ Evitar @Service, @Repository, @Autowired dentro da camada de domínio.
 
 **6. Sugestão de classes e pacotes**
 
